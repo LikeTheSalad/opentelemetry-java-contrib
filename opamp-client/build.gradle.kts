@@ -11,6 +11,14 @@ java {
   targetCompatibility = JavaVersion.VERSION_1_8
 }
 
+tasks.withType<JavaCompile>().configureEach {
+  with(options) {
+    // Suppressing warnings about the usage of deprecated methods.
+    // This is needed because the Protobuf plugin (com.google.protobuf) generates code that uses deprecated methods.
+    compilerArgs.add("-Xlint:-deprecation")
+  }
+}
+
 dependencies {
   implementation("com.google.protobuf:protobuf-java")
   annotationProcessor("com.google.auto.value:auto-value")
