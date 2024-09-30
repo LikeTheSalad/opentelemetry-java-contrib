@@ -19,14 +19,16 @@ tasks.withType<JavaCompile>().configureEach {
   }
 }
 
+val protobufVersion = "4.28.2"
+
 protobuf {
   protoc {
-    artifact = "com.google.protobuf:protoc:4.28.2"
+    artifact = "com.google.protobuf:protoc:$protobufVersion"
   }
 }
 
 dependencies {
-  implementation("com.google.protobuf:protobuf-java")
+  implementation("com.google.protobuf:protobuf-java:$protobufVersion")
   annotationProcessor("com.google.auto.value:auto-value")
   compileOnly("com.google.auto.value:auto-value-annotations")
 }
