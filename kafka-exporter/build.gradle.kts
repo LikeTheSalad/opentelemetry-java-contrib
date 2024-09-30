@@ -21,7 +21,7 @@ dependencies {
   runtimeOnly("com.fasterxml.jackson.core:jackson-databind")
 
   implementation("io.opentelemetry:opentelemetry-exporter-otlp-common")
-  implementation("com.google.protobuf:protobuf-java")
+  implementation("com.google.protobuf:protobuf-java:3.23.4")
 
   testImplementation("io.opentelemetry:opentelemetry-api")
   testImplementation("io.opentelemetry:opentelemetry-sdk-testing")
