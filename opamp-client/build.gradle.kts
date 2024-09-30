@@ -19,6 +19,12 @@ tasks.withType<JavaCompile>().configureEach {
   }
 }
 
+protobuf {
+  protoc {
+    artifact = "com.google.protobuf:protoc:4.28.2"
+  }
+}
+
 dependencies {
   implementation("com.google.protobuf:protobuf-java")
   annotationProcessor("com.google.auto.value:auto-value")
