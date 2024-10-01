@@ -11,7 +11,7 @@ import javax.annotation.Nullable;
 import opamp.proto.Opamp;
 
 /**
- * Data class provided in {@link OpampClient.Callback#onMessage(OpampClient, MessageData)} with
+ * Data class provided in {@link OpampClient.Callbacks#onMessage(OpampClient, MessageData)} with
  * Server's provided status changes.
  */
 @AutoValue
