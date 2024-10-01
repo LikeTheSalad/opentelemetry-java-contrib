@@ -27,11 +27,22 @@ public interface OpampClient {
   void start(Callbacks callbacks);
 
   /**
-   * Stops the client. May be called only after {@link #start(Callbacks)}. May be called
-   * only once. After this call returns successfully it is guaranteed that no callbacks will be
-   * called. Once stopped, the client cannot be started again.
+   * Stops the client. May be called only after {@link #start(Callbacks)}. May be called only once.
+   * After this call returns successfully it is guaranteed that no callbacks will be called. Once
+   * stopped, the client cannot be started again.
    */
   void stop();
+
+  /**
+   * Sets attributes of the Agent. The attributes will be included in the next status report sent to
+   * the Server. When called after {@link #start(Callbacks)}, the attributes will be included in the
+   * next outgoing status report. This is typically used by Agents which allow their
+   * AgentDescription to change dynamically while the OpAMPClient is started. May be also called
+   * from OnMessage handler.
+   *
+   * @param agentDescription The new agent description.
+   */
+  void setAgentDescription(Opamp.AgentDescription agentDescription);
 
   /**
    * Sets the current remote config status which will be sent in the next agent to server request.
@@ -50,9 +61,9 @@ public interface OpampClient {
   interface Callbacks {
     /**
      * Called when the connection is successfully established to the Server. May be called after
-     * {@link #start(Callbacks)} is called and every time a connection is established to
-     * the Server. For WebSocket clients this is called after the handshake is completed without any
-     * error. For HTTP clients this is called for any request if the response status is OK.
+     * {@link #start(Callbacks)} is called and every time a connection is established to the Server.
+     * For WebSocket clients this is called after the handshake is completed without any error. For
+     * HTTP clients this is called for any request if the response status is OK.
      *
      * @param client The relevant {@link OpampClient} instance.
      */
@@ -60,8 +71,8 @@ public interface OpampClient {
 
     /**
      * Called when the connection to the Server cannot be established. May be called after {@link
-     * #start(Callbacks)} is called and tries to connect to the Server. May also be
-     * called if the connection is lost and reconnection attempt fails.
+     * #start(Callbacks)} is called and tries to connect to the Server. May also be called if the
+     * connection is lost and reconnection attempt fails.
      *
      * @param client The relevant {@link OpampClient} instance.
      * @param throwable The exception.
