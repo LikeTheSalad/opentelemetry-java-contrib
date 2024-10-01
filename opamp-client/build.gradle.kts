@@ -11,6 +11,14 @@ java {
   targetCompatibility = JavaVersion.VERSION_1_8
 }
 
+sourceSets {
+  main {
+    proto {
+      srcDir("opamp-spec/proto")
+    }
+  }
+}
+
 tasks.withType<JavaCompile>().configureEach {
   with(options) {
     // Suppressing warnings about the usage of deprecated methods.
