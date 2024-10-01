@@ -38,7 +38,7 @@ public interface OpampClient {
    * the Server. When called after {@link #start(Callbacks)}, the attributes will be included in the
    * next outgoing status report. This is typically used by Agents which allow their
    * AgentDescription to change dynamically while the OpAMPClient is started. May be also called
-   * from OnMessage handler.
+   * from {@link Callbacks#onMessage(OpampClient, MessageData)}.
    *
    * @param agentDescription The new agent description.
    */
